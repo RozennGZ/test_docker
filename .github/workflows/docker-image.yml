@@ -13,7 +13,7 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.MYCAT }}
-          password: ${{ secrets.Tsuki }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
           repository: rzngzn/myimage
           tags: "latest"
