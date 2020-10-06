@@ -15,5 +15,5 @@ jobs:
         with:
           username: ${{ secrets.RZNGZN }}
           password: ${{ secrets.Tsuki }}
-          repository: davidgohel/r4-baseapp
-          tags: "latest,r-4.0.2,v1"
+          repository: rzngzn/myimage
+          tags: "latest"
