@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 ARG R_VERSION=4.0.2
+
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata && \
   apt-get install -y software-properties-common apt-utils curl dialog wget libpcre2-dev zlib1g-dev default-jre default-jdk liblzma-dev bzip2 libbz2-dev libpng-dev build-essential texlive-fonts-extra texinfo gfortran libtiff-dev libreadline-dev  libcurl4 libcurl4-openssl-dev libssl-dev libxml2-dev && \
@@ -13,15 +14,12 @@ RUN apt-get update && \
   ./configure --prefix=/usr/local/bin/R/${R_VERSION} --enable-R-shlib --with-blas --with-lapack --with-readline=no --with-x=no && \
   make && \
   make install && \
-  rm -r R-${R_VERSION}.tar.gz R-${R_VERSION} \
-
-COPY Tsuki_0.1.0.tar.gz .
+  rm -r R-${R_VERSION}.tar.gz R-${R_VERSION}
 
 RUN /usr/local/bin/R/${R_VERSION}/bin/R -e "install.packages('cowsay',dependencies=TRUE)"
 
-RUN /usr/local/bin/R/${R_VERSION}/bin/R -e "install.packages('Tsuki_0.1.0.tar.gz',dependencies=TRUE, repos=NULL)"
-
 ARG R_VERSION=3.6.2
+
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata && \
   apt-get install -y software-properties-common apt-utils curl dialog wget libpcre2-dev zlib1g-dev default-jre default-jdk liblzma-dev bzip2 libbz2-dev libpng-dev build-essential texlive-fonts-extra texinfo gfortran libtiff-dev libreadline-dev  libcurl4 libcurl4-openssl-dev libssl-dev libxml2-dev && \
@@ -34,7 +32,7 @@ RUN apt-get update && \
   ./configure --prefix=/usr/local/bin/R/${R_VERSION} --enable-R-shlib --with-blas --with-lapack --with-readline=no --with-x=no && \
   make && \
   make install && \
-  rm -r R-${R_VERSION}.tar.gz R-${R_VERSION} \
+  rm -r R-${R_VERSION}.tar.gz R-${R_VERSION}
 
 
 
