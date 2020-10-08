@@ -5,7 +5,10 @@ RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata && \
   apt-get install -y software-properties-common apt-utils curl dialog wget libpcre2-dev zlib1g-dev default-jre default-jdk liblzma-dev bzip2 libbz2-dev libpng-dev build-essential texlive-fonts-extra texinfo gfortran libtiff-dev libreadline-dev  libcurl4 libcurl4-openssl-dev libssl-dev libxml2-dev && \
   add-apt-repository -y ppa:marutter/rrutter4.0 && \
-  apt update && \
+  apt-get update && \
+  cp /etc/apt/sources.list /etc/apt/sources.list~ && \
+  sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list && \
+  apt-get update && \
   apt-get -y build-dep r-base \
 
 ARG R_VERSION=4.0.2
