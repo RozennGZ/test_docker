@@ -11,7 +11,7 @@ RUN apt-get update && \
   apt-get update && \
   apt-get -y build-dep r-base \
 
-ARG R_VERSION=4.0.2
+RUN R_VERSION=4.0.2
 
 RUN  curl -O https://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz  && \
   tar -xzvf R-${R_VERSION}.tar.gz  && \
