@@ -18,6 +18,7 @@ RUN  curl -O https://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz \
   && ./configure --prefix=/usr/local/bin/R/${R_VERSION} --enable-R-shlib --with-blas --with-lapack --with-readline=no --with-x=no \
   && make \
   && make install \
+  && cd ../ \
   && rm -r R-${R_VERSION}.tar.gz R-${R_VERSION}
 
 RUN /usr/local/bin/R/${R_VERSION}/bin/R -e "install.packages('cowsay',dependencies=TRUE)"
