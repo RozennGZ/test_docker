@@ -22,6 +22,8 @@ RUN  curl -O https://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz \
   && rm -r R-${R_VERSION}.tar.gz R-${R_VERSION}
 
 RUN /usr/local/bin/R/${R_VERSION}/bin/R -e "install.packages('devtools',dependencies=TRUE,repos='https://cloud.r-project.org/')"
+RUN /usr/local/bin/R/${R_VERSION}/bin/R -e "library(devtools)"
+RUN /usr/local/bin/R/${R_VERSION}/bin/R -e "devtools::install_github("MSnutrition/GNOM",auth_token="e1449ad132acc029bfaf163f04d0bcd79346ccad", INSTALL_opts = c("--no-multiarch"))"
 
 ARG R_VERSION=3.6.2
 
